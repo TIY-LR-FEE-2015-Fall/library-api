@@ -5,6 +5,7 @@ var BookTransformer = Mystique.Transformer.extend({
   resourceName: 'book',
   mapOut: function(book) {
     return {
+      id: book.id,
       title: book.title,
       year: book.year,
       isbn: book.isbn,

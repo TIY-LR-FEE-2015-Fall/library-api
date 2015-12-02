@@ -42,7 +42,7 @@ module.exports = function(req, res, next) {
         .populate(options.include)
         .exec((err, results) => {
           if (err) {
-            res.status(500).send(err);
+            return res.status(500).send(err);
           }
 
           req.store.renderCollection(results, modelName, options);
@@ -64,7 +64,7 @@ module.exports = function(req, res, next) {
       beforeSave(model, () => {
         model.save((err) => {
           if (err) {
-            res.status(500).send(err);
+            return res.status(500).send(err);
           }
 
           model.populate(options.include, () => {
@@ -85,7 +85,7 @@ module.exports = function(req, res, next) {
         .populate([])
         .exec((err, model) => {
           if (err) {
-            res.status(500).send(err);
+            return res.status(500).send(err);
           }
 
           req.store.renderItem(model, modelName, options);

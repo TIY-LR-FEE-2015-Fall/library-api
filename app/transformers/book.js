@@ -6,8 +6,8 @@ var BookTransformer = Mystique.Transformer.extend({
     return {
       title: book.title,
       year: book.year,
+      isbn: book.isbn,
       isbn: book.data.isbn,
-      author: book.author._id,
     };
   },
 
@@ -15,9 +15,9 @@ var BookTransformer = Mystique.Transformer.extend({
     return {
       title: req.body.book.title,
       year: req.body.book.year,
-      data: {
-        isbn: req.body.book.isbn,
-      },
+      isbn: req.body.book.isbn,
+      checkedInAt: req.body.book.checkedInAt,
+      checkedOutAt: req.body.book.checkedOutAt,
     };
   },
 });

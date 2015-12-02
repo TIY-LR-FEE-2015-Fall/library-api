@@ -1,0 +1,6 @@
+{
+  "name": "Book Server",
+  "description": "A tiny API Kit Server.",
+  "repository": "https://github.com/tiy-lr-fee-2015-fall/library-server",
+  "addons": ["mongolab", "heroku-redis"]
+}

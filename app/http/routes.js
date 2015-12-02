@@ -3,16 +3,16 @@ var router = express.Router();
 var apiRouter = express.Router();
 var oauth = require('../oauth');
 
-var authFilter = require('./filters/auth');
+// var authFilter = require('./filters/auth');
 
-var register = require('./resources/register');
+// var register = require('./resources/register');
 
-apiRouter.use('/register', register);
+// apiRouter.use('/register', register);
 
 var books = require('./resources/books');
 
 apiRouter.use('/books', books);
 
-router.use('/api', oauth.authorise(), apiRouter);
+router.use('/api', apiRouter);
 
 module.exports = router;

@@ -1,3 +1,5 @@
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/emberapi');
+var mongoUrl = (process.env.MONGOLAB_URI || 'mongodb://localhost/emberapi');
+
+mongoose.connect(mongoUrl);

@@ -5,7 +5,7 @@ var favicon = require('serve-favicon');
 var app = express();
 var cors = require('cors');
 
-app.use(cors);
+app.use(cors());
 require('./bootstrap/middleware')(app);
 require('./bootstrap/session')(app);
 require('./bootstrap/mongo');

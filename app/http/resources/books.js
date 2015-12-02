@@ -3,7 +3,6 @@ var router = express.Router();
 
 router.get('/', function(req, res) {
   return req.store.recordCollection('Book', {
-    include: ['author'],
     queryBy: ['year'],
     orderBy: 'year',
   });

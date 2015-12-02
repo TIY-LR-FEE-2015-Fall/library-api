@@ -14,20 +14,7 @@ router.get('/:id', function(req, res) {
 });
 
 router.post('/', function(req, res) {
-  return req.store.createRecord('Book', {
-    include: ['author'],
-    beforeSave: (book, save) => {
-      book.author = req.user;
-      save();
-    },
-
-    afterSave: (book) => {
-      var author = book.author;
-
-      author.books.push(book);
-      author.save();
-    },
-  });
+  return req.store.createRecord('Book', { });
 });
 
 module.exports = router;

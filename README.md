@@ -56,6 +56,11 @@ Routes are registered in `http/routes.js` and the resources for the various rout
 
 Everything else is pretty standard.
 
+#### Deploy
+To deploy to Heroku, use the button below. You will need to have a credit card on your account in order to set up MongoLab, but it is free and will not be charged.
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
 ## License - MIT
 
 The MIT License (MIT)

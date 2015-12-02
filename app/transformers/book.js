@@ -7,7 +7,8 @@ var BookTransformer = Mystique.Transformer.extend({
       title: book.title,
       year: book.year,
       isbn: book.isbn,
-      isbn: book.data.isbn,
+      checkedInAt: book.checkedInAt,
+      checkedOutAt: book.checkedOutAt,
     };
   },
 

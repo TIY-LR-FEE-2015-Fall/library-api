@@ -1,4 +1,5 @@
 var Mystique = require('mystique');
+var Mystique = require('mystique');
 
 var BookTransformer = Mystique.Transformer.extend({
   resourceName: 'book',
@@ -7,6 +8,7 @@ var BookTransformer = Mystique.Transformer.extend({
       title: book.title,
       year: book.year,
       isbn: book.isbn,
+      author: book.author,
       checkedInAt: book.checkedInAt,
       checkedOutAt: book.checkedOutAt,
     };
@@ -17,6 +19,7 @@ var BookTransformer = Mystique.Transformer.extend({
       title: req.body.book.title,
       year: req.body.book.year,
       isbn: req.body.book.isbn,
+      author: req.body.book.author,
       checkedInAt: req.body.book.checkedInAt,
       checkedOutAt: req.body.book.checkedOutAt,
     };

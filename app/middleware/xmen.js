@@ -41,6 +41,10 @@ module.exports = function(req, res, next) {
         .sort(urlParts.query.orderBy || options.orderBy)
         .populate(options.include)
         .exec((err, results) => {
+          if (err) {
+            res.status(500).send(err);
+          }
+
           req.store.renderCollection(results, modelName, options);
         });
     },
@@ -60,7 +64,7 @@ module.exports = function(req, res, next) {
       beforeSave(model, () => {
         model.save((err) => {
           if (err) {
-            return res.send({err});
+            res.status(500).send(err);
           }
 
           model.populate(options.include, () => {
@@ -80,6 +84,10 @@ module.exports = function(req, res, next) {
       Model.findById(id)
         .populate([])
         .exec((err, model) => {
+          if (err) {
+            res.status(500).send(err);
+          }
+
           req.store.renderItem(model, modelName, options);
         });
     },

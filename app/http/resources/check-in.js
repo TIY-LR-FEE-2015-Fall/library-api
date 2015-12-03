@@ -14,6 +14,8 @@ router.get('/:id', function(req) {
 
 router.post('/', function(req) {
   return req.store.createRecord('CheckIn', {
+    include: ['book'],
+
     afterSave: (checkIn) => {
       var book = checkIn.book;
 

@@ -37,6 +37,11 @@ module.exports = function(req, res, next) {
       var urlParts = url.parse(req.url, true);
 
       var searchvValues = _.pick(urlParts.query, options.queryBy);
+
+      if (urlParts.ids) {
+        searchvValues._id = urlParts.ids;
+      }
+
       var query = Model.find(searchvValues)
         .sort(urlParts.query.orderBy || options.orderBy)
         .populate(options.include)

@@ -91,6 +91,39 @@ module.exports = function(req, res, next) {
           req.store.renderItem(model, modelName, options);
         });
     },
+
+    updateRecord(modelName, id, options) {
+      options = options || {};
+      options.include = options.include || [];
+      var beforeSave = options.beforeSave || defaultBeforeSave;
+      var afterSave = options.afterSave || () => {};
+
+      var Transformer = Mystique.getTransformer(modelName);
+
+      var data = Transformer.rawItem(req, Transformer.mapIn);
+      var Model = Mongoose.model(modelName);
+
+      Model.findById(id)
+        .populate([])
+        .exec((err, model) => {
+          beforeSave(model, () => {
+            if (err) {
+              return res.status(500).send(err);
+            }
+
+            model.set(data);
+            model.save((err) => {
+              if (err) {
+                return res.status(500).send(err);
+              }
+
+              req.store.renderItem(model, modelName, options);
+
+              afterSave(model);
+            });
+          });
+        });
+    },
   };
 
   return next();

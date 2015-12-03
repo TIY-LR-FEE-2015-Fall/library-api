@@ -4,11 +4,13 @@ var ObjectId = Mongoose.Types.ObjectId;
 
 var getIdForModel = function(model, propertyName) {
   var prop = model.get(propertyName);
-  if (prop instanceof ObjectId) {
+  var id = model.get(propertyName + '.id');
+
+  if (!prop || prop instanceof ObjectId) {
     return prop;
   }
 
-  return prop.get('id');
+  return id;
 };
 
 var CheckInTransformer = Mystique.Transformer.extend({

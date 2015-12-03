@@ -1,17 +1,17 @@
 var Mystique = require('mystique');
 var Mystique = require('mystique');
 
+var getIdForModel = function(model, propertyName) {
+  var prop = model.get(propertyName);
+  if (typeof prop === 'string') {
+    return prop;
+  }
+
+  return prop.id;
+};
+
 var CheckInTransformer = Mystique.Transformer.extend({
   resourceName: 'checkIn',
-
-  getIdForModel: function(model, propertyName) {
-    var prop = model.get(propertyName);
-    if (typeof prop === 'string') {
-      return prop;
-    }
-
-    return prop.id;
-  },
 
   mapOut: function(checkIn) {
     return {

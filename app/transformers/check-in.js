@@ -16,7 +16,7 @@ var CheckInTransformer = Mystique.Transformer.extend({
   mapOut: function(checkIn) {
     return {
       // book: getIdForModel(checkIn, 'book'),
-      checkedInAt: checkIn.get('book'),
+      book: checkIn.get('book'),
       checkedInAt: checkIn.checkedInAt,
       checkedOutAt: checkIn.checkedOutAt,
     };

@@ -3,9 +3,19 @@ var Mystique = require('mystique');
 
 var CheckInTransformer = Mystique.Transformer.extend({
   resourceName: 'checkIn',
+
+  getIdForModel: function(model, propertyName) {
+    var prop = model.get(propertyName);
+    if (typeof prop === 'string') {
+      return prop;
+    }
+
+    return prop.id;
+  },
+
   mapOut: function(checkIn) {
     return {
-      book: checkIn.get('book.id') || checkIn.book,
+      book: getIdForModel(checkIn, 'book'),
       checkedInAt: checkIn.checkedInAt,
       checkedOutAt: checkIn.checkedOutAt,
     };

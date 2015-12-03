@@ -8,7 +8,7 @@ var getIdForModel = function(model, propertyName) {
     return prop;
   }
 
-  return prop.id;
+  return prop.get('id');
 };
 
 var CheckInTransformer = Mystique.Transformer.extend({

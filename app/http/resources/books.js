@@ -20,4 +20,8 @@ router.put('/:id', function(req) {
   return req.store.updateRecord('Book', req.params.id);
 });
 
+router.delete('/:id', function(req) {
+  return req.store.destroyRecord('Book', req.params.id);
+});
+
 module.exports = router;

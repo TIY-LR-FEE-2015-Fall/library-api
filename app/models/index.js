@@ -1,6 +1,7 @@
 module.exports = {
   User: require('./user'),
   Book: require('./book'),
+  CheckIn: require('./check-in'),
 
   oauth: {
     AccessTokens: require('./oauth/access-tokens'),

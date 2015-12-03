@@ -10,7 +10,9 @@ var oauth = require('../oauth');
 // apiRouter.use('/register', register);
 
 var books = require('./resources/books');
+var checkIns = require('./resources/check-in');
 
+apiRouter.use('/checkIns', checkIns);
 apiRouter.use('/books', books);
 
 router.use('/api', apiRouter);

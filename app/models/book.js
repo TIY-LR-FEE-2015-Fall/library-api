@@ -6,8 +6,8 @@ var BookSchema = new Schema({
   year: {type: Number, required: true},
   isbn: {type: String, required: true, unique: true},
   author: {type: String, required: true},
-  checkedInAt: {type: Date},
-  checkedOutAt: {type: Date},
+
+  checkIns: [{type: Schema.Types.ObjectId, ref: 'CheckIn'}],
 });
 
 module.exports = Mongoose.model('Book', BookSchema);

@@ -1,9 +1,10 @@
 var Mystique = require('mystique');
-var Mystique = require('mystique');
+var Mongoose = require('mongoose');
+var ObjectId = Mongoose.Types.ObjectId;
 
 var getIdForModel = function(model, propertyName) {
   var prop = model.get(propertyName);
-  if (typeof prop === 'string') {
+  if (prop instanceof ObjectId) {
     return prop;
   }
 
@@ -15,8 +16,7 @@ var CheckInTransformer = Mystique.Transformer.extend({
 
   mapOut: function(checkIn) {
     return {
-      // book: getIdForModel(checkIn, 'book'),
-      book: checkIn.get('book'),
+      book: getIdForModel(checkIn, 'book'),
       checkedInAt: checkIn.checkedInAt,
       checkedOutAt: checkIn.checkedOutAt,
     };
